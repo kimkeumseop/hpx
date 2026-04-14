@@ -1,0 +1,102 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables ──────────────────────────────────────────────────────── */
+:root {
+  --lavender:      #8B6FBB;
+  --lavender-light:#c4aaff;
+  --mint:          #6BBFB5;
+  --mint-light:    #8fd8d2;
+  --cream:         #FAFAF7;
+  --text-main:     #2D2637;
+  --text-sub:      #6B7280;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--lavender-light);
+  border-radius: 3px;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background-color: #dcceff;
+  color: var(--text-main);
+}
+
+/* ─── Utilities ──────────────────────────────────────────────────────────── */
+@layer utilities {
+  .gradient-brand {
+    background: linear-gradient(135deg, var(--lavender) 0%, var(--mint) 100%);
+  }
+
+  .gradient-brand-text {
+    background: linear-gradient(135deg, var(--lavender) 0%, var(--mint) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 111, 187, 0.12);
+    box-shadow: 0 8px 40px rgba(139, 111, 187, 0.12);
+  }
+
+  .answer-btn {
+    @apply w-full py-4 px-6 rounded-2xl border text-sm font-bold transition-all duration-200;
+    @apply border-lavender-200 bg-white text-[#2D2637];
+    @apply hover:border-lavender-400 hover:bg-lavender-50 hover:shadow-lavender-sm hover:scale-[1.02];
+    @apply active:scale-[0.98];
+  }
+
+  .answer-btn-selected {
+    @apply border-lavender-500 bg-lavender-500 text-white shadow-lavender-md scale-[1.02];
+  }
+}
+
+/* ─── Blob animations ────────────────────────────────────────────────────── */
+@keyframes blobMove {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%       { border-radius: 50% 60% 30% 60% / 30% 70% 40% 50%; }
+  75%       { border-radius: 40% 50% 60% 40% / 60% 40% 60% 30%; }
+}
+
+.blob {
+  animation: blobMove 10s ease-in-out infinite;
+}
+
+.blob-delayed {
+  animation: blobMove 10s ease-in-out 3s infinite;
+}
