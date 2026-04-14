@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef, useCallback } from 'react'
+import { useEffect, useState, useRef, useCallback, type ComponentType } from 'react'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -11,25 +11,27 @@ import { saveResult } from '@/lib/firebase'
 import ResultCard from '@/components/ResultCard'
 import AdSlot from '@/components/AdSlot'
 
-// Recharts — SSR 비활성화
+// Recharts — SSR 비활성화 (recharts defaultProps 타입과 Next.js 타입 불일치로 캐스팅 필요)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const cast = <T,>(c: T) => c as unknown as ComponentType<any>
 const RadarChart = dynamic(
-  () => import('recharts').then((m) => ({ default: m.RadarChart })),
+  () => import('recharts').then((m) => ({ default: cast(m.RadarChart) })),
   { ssr: false }
 )
 const Radar = dynamic(
-  () => import('recharts').then((m) => ({ default: m.Radar })),
+  () => import('recharts').then((m) => ({ default: cast(m.Radar) })),
   { ssr: false }
 )
 const PolarGrid = dynamic(
-  () => import('recharts').then((m) => ({ default: m.PolarGrid })),
+  () => import('recharts').then((m) => ({ default: cast(m.PolarGrid) })),
   { ssr: false }
 )
 const PolarAngleAxis = dynamic(
-  () => import('recharts').then((m) => ({ default: m.PolarAngleAxis })),
+  () => import('recharts').then((m) => ({ default: cast(m.PolarAngleAxis) })),
   { ssr: false }
 )
 const ResponsiveContainer = dynamic(
-  () => import('recharts').then((m) => ({ default: m.ResponsiveContainer })),
+  () => import('recharts').then((m) => ({ default: cast(m.ResponsiveContainer) })),
   { ssr: false }
 )
 
