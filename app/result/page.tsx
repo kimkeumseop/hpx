@@ -13,17 +13,23 @@ import AdSlot from '@/components/AdSlot'
 
 // Recharts — SSR 비활성화
 const RadarChart = dynamic(
-  () => import('recharts').then((m) => m.RadarChart),
+  () => import('recharts').then((m) => ({ default: m.RadarChart })),
   { ssr: false }
 )
-const Radar = dynamic(() => import('recharts').then((m) => m.Radar), { ssr: false })
-const PolarGrid = dynamic(() => import('recharts').then((m) => m.PolarGrid), { ssr: false })
+const Radar = dynamic(
+  () => import('recharts').then((m) => ({ default: m.Radar })),
+  { ssr: false }
+)
+const PolarGrid = dynamic(
+  () => import('recharts').then((m) => ({ default: m.PolarGrid })),
+  { ssr: false }
+)
 const PolarAngleAxis = dynamic(
-  () => import('recharts').then((m) => m.PolarAngleAxis),
+  () => import('recharts').then((m) => ({ default: m.PolarAngleAxis })),
   { ssr: false }
 )
 const ResponsiveContainer = dynamic(
-  () => import('recharts').then((m) => m.ResponsiveContainer),
+  () => import('recharts').then((m) => ({ default: m.ResponsiveContainer })),
   { ssr: false }
 )
 
