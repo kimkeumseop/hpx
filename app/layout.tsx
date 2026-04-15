@@ -3,7 +3,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   verification: {
-    google: 'nuLGFDz52juOAaen5eiyFSbSCEW7XcYXaO76upq2NBs',
+    google: [
+      'nuLGFDz52juOAaen5eiyFSbSCEW7XcYXaO76upq2NBs',
+      'Uq__XjJJK6j-ipJKyUcbCDK6hy_aWPgaf3ep7bsbdlk',
+    ],
   },
   other: {
     'google-adsense-account': 'ca-pub-1059415497859090',
