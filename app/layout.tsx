@@ -6,7 +6,10 @@ export const metadata: Metadata = {
     'google-adsense-account': 'ca-pub-1059415497859090',
   },
   metadataBase: new URL('https://hsp-key.kr'),
-  title: 'HSP 자가진단 테스트 | 나는 민감한 사람일까?',
+  title: {
+    default: 'HSP 자가진단 테스트 | 나는 민감한 사람일까?',
+    template: '%s | HSP Key',
+  },
   description:
     '27문항으로 알아보는 나의 감수성 지수. HSP 여부와 민감도 타입을 무료로 진단해보세요. 깊은 바다형·숲속 관찰자형·반HSP형·비HSP형 중 나는 어떤 유형일까요?',
   keywords: [
@@ -18,9 +21,16 @@ export const metadata: Metadata = {
     'Highly Sensitive Person',
     'MBTI',
     '심리테스트',
+    '민감성 테스트',
+    '고감수성인',
+    'HSP 테스트',
+    '심리 자가진단',
   ],
   authors: [{ name: 'HSP Key' }],
   creator: 'HSP Key',
+  alternates: {
+    canonical: 'https://hsp-key.kr',
+  },
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
@@ -57,6 +67,20 @@ export const metadata: Metadata = {
       { url: '/icon.png', type: 'image/png' },
     ],
     apple: '/apple-icon.png',
+  },
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'HSP Key',
+  url: 'https://hsp-key.kr',
+  description: '27문항으로 알아보는 나의 감수성 지수. HSP 여부와 민감도 타입을 무료로 진단하세요.',
+  inLanguage: 'ko-KR',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://hsp-key.kr/?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
   },
 }
 
@@ -107,6 +131,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
