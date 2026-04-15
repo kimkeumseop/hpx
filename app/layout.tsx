@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  other: {
+    'google-adsense-account': 'ca-pub-1059415497859090',
+  },
   metadataBase: new URL('https://hsp-key.kr'),
   title: 'HSP 자가진단 테스트 | 나는 민감한 사람일까?',
   description:
@@ -107,6 +110,11 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1059415497859090"
+          crossOrigin="anonymous"
         />
       </head>
       <body className="font-pretendard bg-cream min-h-screen antialiased">
