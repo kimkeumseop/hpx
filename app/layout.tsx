@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  verification: {
+    google: 'nuLGFDz52juOAaen5eiyFSbSCEW7XcYXaO76upq2NBs',
+  },
   other: {
     'google-adsense-account': 'ca-pub-1059415497859090',
   },
